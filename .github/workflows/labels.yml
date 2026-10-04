@@ -1,0 +1,31 @@
+# Makes the labels the issue templates and triage use. Run it once from the Actions tab ("Run workflow"); it's safe to
+# run again, and it's also run whenever this file changes.
+name: Labels
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/labels.yml]
+
+permissions:
+  issues: write
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          label() { gh label create "$1" --color "$2" --description "$3" --force; }
+          label bug            d73a4a "Something isn't working"
+          label enhancement    a2eeef "An idea or improvement"
+          label triage         fbca04 "Not looked at yet"
+          label planned        0e8a16 "We're going to do it"
+          label "in progress"  1d76db "Being worked on"
+          label released       5319e7 "Fixed or added in a released version"
+          label "needs info"   d876e3 "We need more detail to look into it"
+          label duplicate      cfd3d7 "Already reported"
+          label "won't do"     ffffff "Not something Headcode will do"

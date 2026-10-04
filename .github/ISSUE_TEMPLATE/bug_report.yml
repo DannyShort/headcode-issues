@@ -1,0 +1,68 @@
+name: Report a problem
+description: Something in Headcode isn't working as it should.
+title: "[Problem]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to tell us. Please check the [open problems](https://github.com/DannyShort/headcode-issues/issues?q=is%3Aissue+is%3Aopen+label%3Abug) first, and add a 👍 to one that matches rather than opening another.
+
+        **This repository is public**, so please don't include your email address, home station or anything else personal.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What went wrong, and what did you expect to happen instead?
+      placeholder: The 08:12 to Leeds showed as cancelled, but it ran on time.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can we make it happen?
+      description: The steps that lead to the problem, if you know them.
+      placeholder: |
+        1. Add a journey from York to Leeds
+        2. Open it from the journey list
+        3. ...
+  - type: input
+    id: journey
+    attributes:
+      label: Train or station
+      description: The train (headcode, time and route) or station involved, if there was one, and the date.
+      placeholder: 1A23, 08:12 York to Leeds, 4 Oct 2026
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app?
+      options:
+        - Journeys and live running
+        - Platforms, formation or connections
+        - Notifications
+        - Logbook and tokens
+        - Map or stations
+        - Account and sync
+        - Something else
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Drag images in here if they help show the problem.
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Under Settings → About. Filled in for you when you report from the app.
+      placeholder: "1.47.0"
+  - type: input
+    id: server-version
+    attributes:
+      label: Server version
+      description: Under Settings → About.
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      description: Filled in for you when you report from the app.
+      placeholder: iPhone 15, Safari, added to the Home Screen
